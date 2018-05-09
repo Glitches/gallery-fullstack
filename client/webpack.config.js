@@ -5,80 +5,92 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
 let config = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './public'),
-        filename: 'output.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/, // files ending with .js
-                exclude: /node_modules/, // exclude the node_modules directory
-                loader: 'babel-loader' // use this (babel-core) loader
-            },
-            {
-                test: /\.scss$/, //files ending with .scss~
-                use: ExtractTextWebpackPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: 'style-loader'
-                })
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'file-loader?context=src/assets/images/&name=images/[path][name].[ext]',
-                    {
-                        // images loader
-                        loader: 'image-webpack-loader',
-                        query: {
-                            mozjpeg: {
-                                progressive: true
-                            },
-                            gifsicle: {
-                                interlaced: false
-                            },
-                            optipng: {
-                                optimizationLevel: 4
-                            },
-                            pngquant: {
-                                quality: '75-90',
-                                speed: 3
-                            }
-                        }
-                    }
-                ],
-                exclude: /node_modules/,
-                include: __dirname
+  entry: './client/index.js',
+  output: {
+    path: path.resolve(__dirname, './public'),
+    filename: 'output.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/, // files ending with .js
+        exclude: /node_modules/, // exclude the node_modules directory
+        loader: 'babel-loader' // use this (babel-core) loader
+      },
+      {
+        test: /\.scss$/, //files ending with .scss~
+        use: ExtractTextWebpackPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader'
+        })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file-loader?context=src/assets/images/&name=images/[path][name].[ext]',
+          {
+            // images loader
+            loader: 'image-webpack-loader',
+            query: {
+              mozjpeg: {
+                progressive: true
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              optipng: {
+                optimizationLevel: 4
+              },
+              pngquant: {
+                quality: '75-90',
+                speed: 3
+              }
             }
-        ]
-    },
-    plugins: [new ExtractTextWebpackPlugin('styles.css')],
-    devServer: {
-        contentBase: path.resolve(__dirname, './public'),
-        historyApiFallback: true,
-        inline: true,
-        open: true
-    },
-    devtool: 'eval-source-map'
+          }
+        ],
+        exclude: /node_modules/,
+        include: __dirname
+      }
+    ]
+  },
+  plugins: [new ExtractTextWebpackPlugin('styles.css')],
+  devServer: {
+    contentBase: path.resolve(__dirname, './public'),
+    historyApiFallback: true,
+    inline: true,
+    open: true
+  },
+  devtool: 'eval-source-map'
 };
 
 module.exports = config;
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins.push(new OptimizeCSSAssets());
-    module.exports.optimization = {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                uglifyOptions: {
-                    compress: false,
-                    ecma: 6,
-                    mangle: true
-                },
-                sourceMap: true
-            })
-        ]
-    };
+  module.exports.plugins.push(new OptimizeCSSAssets());
+  module.exports.mode = 'production';
+  module.exports.optimization = {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
+    ]
+  };
 }
+
+/*     splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /react|angluar|lodash/,
+          chunks: 'initial',
+          name: 'vendor',
+          enforce: true
+        }
+      }
+    }, */

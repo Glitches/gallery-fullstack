@@ -1,5 +1,5 @@
 {
-    "name": "Gallery",
+    "name": "gallery",
     "version": "0.0.1",
     "description": "A small full-stack app showcasing a Flickr gallery",
     "main": "server/server.js",
@@ -10,16 +10,66 @@
     "dependencies": {
         "cors": "^2.8.4",
         "dotenv": "^5.0.1",
-        "express": "^4.16.3"
+        "express": "^4.16.3",
+        "react": "^16.3.2",
+        "react-dom": "^16.3.2",
+        "react-redux": "^5.0.7",
+        "redux": "^4.0.0",
+        "redux-thunk": "^2.2.0"
+    },
+    "optionalDependencies": {
+        "fsevents": "*"
     },
     "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-jest": "^22.4.3",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-react": "^6.24.1",
+        "css-loader": "^0.28.11",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "enzyme-to-json": "^3.3.3",
+        "eslint": "^4.19.1",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-prettier": "^2.6.0",
+        "eslint-plugin-react": "^7.7.0",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^1.1.11",
+        "identity-obj-proxy": "^3.0.0",
+        "image-webpack-loader": "^4.2.0",
+        "jest": "^22.4.3",
+        "node-sass": "^4.9.0",
         "nodemon": "^1.17.4",
+        "optimize-css-assets-webpack-plugin": "^4.0.1",
         "prettier": "^1.12.1",
+        "react-test-renderer": "^16.3.2",
+        "sass-loader": "^7.0.1",
+        "style-loader": "^0.21.0",
+        "uglifyjs-webpack-plugin": "^1.2.5",
         "webpack": "^4.8.1",
         "webpack-cli": "^2.1.3",
         "webpack-dev-server": "^3.1.4"
     },
     "scripts": {
+        "build": "NODE_ENV=production webpack --config client/webpack.config.js",
+        "start": "webpack-dev-server -d --hot --config client/webpack.config.js --watch",
+        "production": "NODE_ENV=production webpack --config client/webpack.config.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
         "dev-server": "nodemon server/index.js --watch"
+    },
+    "jest": {
+        "setupFiles": [
+            "./test/jestsetup.js"
+        ],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
+        "moduleNameMapper": {
+            "^.+\\.(css|scss)$": "identity-obj-proxy"
+        }
     }
 }
