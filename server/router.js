@@ -11,7 +11,6 @@ router.get('/getPhotoList', async (req, res, next) => {
         el.secret
       }_m.jpg`
   );
-  console.log(urlList);
   // const data = await response.json();
   res.send({ urlList });
   // res.send(200);
