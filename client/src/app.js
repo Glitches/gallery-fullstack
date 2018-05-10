@@ -1,10 +1,11 @@
 import React from 'react';
+import TitleBar from './gallery/components/titleBar';
 
 export default class App extends React.PureComponent {
   render() {
     return (
       <div>
-        <h1>HELLO</h1>
+        <TitleBar />
       </div>
     );
   }

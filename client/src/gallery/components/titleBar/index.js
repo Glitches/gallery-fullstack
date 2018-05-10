@@ -1,3 +1,3 @@
-import titleBar from './component.jsx';
+import TitleBar from './component.jsx';
 
-export default titleBar;
+export default TitleBar;
