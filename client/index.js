@@ -6,6 +6,8 @@ import 'rxjs';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
 import { fetchReducer } from './src/store/reducers';
 import { fetchThumbnailsEpic } from './src/store/epics';
 import { createEpicMiddleware } from 'redux-observable';
@@ -16,7 +18,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   fetchReducer,
-  composeEnhancers(applyMiddleware(epicMiddleware))
+  composeEnhancers(applyMiddleware(logger, epicMiddleware))
 );
 
 RenderDOM.render(
