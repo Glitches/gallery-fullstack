@@ -10,7 +10,6 @@ export default class ThumbnailsGrid extends Component {
 
   createGrid() {
     if (this.props.urlList && this.props) {
-      console.log('CreateGrid ', this.props);
       return this.props.urlList.map(thumb => {
         return (
           <div>

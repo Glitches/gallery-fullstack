@@ -1,3 +1,15 @@
-.container {
-  display: grid;
+// .thumbnails__grid {
+//   overflow: scroll;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, 20rem);
+//   grid-column-gap: 2rem;
+//   grid-row-gap: 2rem;
+//   align-content: center;
+// }
+.thumbnails__grid {
+  padding-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }

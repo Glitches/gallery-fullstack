@@ -1,3 +1,15 @@
+$primary-color: black;
+
+@import 'loaders.css/src/animations/pacman.scss';
 .thumbnail__item {
   border: 1px solid gray;
+  text-align: center;
+  margin: 1rem 2rem;
+  // place-self: auto;
+}
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
 }
