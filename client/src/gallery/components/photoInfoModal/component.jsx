@@ -8,7 +8,7 @@ const PhotoInfoModal = props => {
     props.resp.photo.server
   }/${props.resp.photo.id}_${props.resp.photo.secret}.jpg`;
   return (
-    <div className="container__modal">
+    <div className="container__modal" onClick={() => props.openModal()}>
       <img src={url} alt={props.title} />
       <Info {...props} />
     </div>

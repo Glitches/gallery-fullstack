@@ -31,26 +31,28 @@ class App extends React.PureComponent {
     };
   }
 
-  render() {
+  renderModal() {
     if (this.props.modal_opened && this.props.photoInfo) {
-      console.log('app', this.props);
       return (
         <div>
-          <TitleBar />
           <PhotoInfoModal
             {...this.props.photoInfo}
             openModal={this.props.openModal}
           />
         </div>
       );
-    } else {
-      return (
-        <div>
-          <TitleBar />
-          <Thumbnails {...this.props.data} />
-        </div>
-      );
     }
+  }
+
+  render() {
+    console.log('app', this.props);
+    return (
+      <div>
+        <TitleBar />
+        {this.renderModal()}
+        <Thumbnails {...this.props.data} />
+      </div>
+    );
   }
 }
 
