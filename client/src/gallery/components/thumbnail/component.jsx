@@ -33,10 +33,13 @@ class Thumbnail extends React.PureComponent {
         display: 'none'
       };
     }
+    // console.log('thumbnailprops', this.props);
     const photourl = this.props.photo.url;
     const id = this.props.photo.id.toString();
+    const fetchInfo = this.props.fetchPhotoInfo;
+
     return (
-      <div key={id} className="thumbnail__item">
+      <div onClick={() => fetchInfo(id)} key={id} className="thumbnail__item">
         <a>
           <img style={spinnerDisplay} src="./Loading_icon.gif" />
           <img

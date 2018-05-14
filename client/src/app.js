@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchThumbnails } from './store/actionsCreators';
+import { fetchThumbnails, fetchPhotoInfo } from './store/actionsCreators';
 import TitleBar from './gallery/components/titleBar';
 import Thumbnails from './gallery/components/thumbnailsGrid';
 import PropTypes from 'prop-types';
