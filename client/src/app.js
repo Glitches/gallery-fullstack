@@ -45,7 +45,6 @@ class App extends React.PureComponent {
   }
 
   render() {
-    console.log('app', this.props);
     return (
       <div>
         <TitleBar />
