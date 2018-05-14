@@ -9,7 +9,7 @@ export const fetchThumbnailsEpic = action$ =>
     .ofType(FETCH_THUMBNAILS)
     .mergeMap(action =>
       // eslint-disable-next-line no-undef
-      fetch('http://localhost:5000/getPhotoList')
+      fetch('http://localhost:5000/getphotolist')
         .then(response => response.json())
         .then(data => fetchThumbnailsFulfilled(data))
     )
