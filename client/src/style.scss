@@ -1,4 +1,13 @@
+@import 'loaders.css/src/animations/pacman.scss';
+$primary-color: black;
 * {
   padding: 0px;
   margin: 0px;
+}
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
 }
