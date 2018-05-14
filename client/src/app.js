@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchThumbnails, fetchPhotoInfo } from './store/actionsCreators';
+import {
+  fetchThumbnails,
+  fetchPhotoInfo,
+  openModal
+} from './store/actionsCreators';
 import TitleBar from './gallery/components/titleBar';
 import Thumbnails from './gallery/components/thumbnailsGrid';
 import PropTypes from 'prop-types';
@@ -33,7 +37,10 @@ class App extends React.PureComponent {
       return (
         <div>
           <TitleBar />
-          <PhotoInfoModal {...this.props.photoInfo} />
+          <PhotoInfoModal
+            {...this.props.photoInfo}
+            openModal={this.props.openModal}
+          />
         </div>
       );
     } else {
@@ -56,7 +63,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchList: () => dispatch(fetchThumbnails()),
-  fetchPhotoInfo: id => dispatch(fetchPhotoInfo(id))
+  fetchPhotoInfo: id => dispatch(fetchPhotoInfo(id)),
+  openModal: () => dispatch(openModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
