@@ -32,10 +32,12 @@ class Thumbnail extends React.PureComponent {
         display: 'none'
       };
     }
-    // console.log('thumbnailprops', this.props);
     const photourl = this.props.photo.url;
     const id = this.props.photo.id.toString();
-    const fetchInfo = this.props.fetchPhotoInfo;
+    const fetchInfo = id => {
+      this.props.openModal();
+      this.props.fetchPhotoInfo(id);
+    };
 
     return (
       <div onClick={() => fetchInfo(id)} key={id} className="thumbnail__item">

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './style.scss';
 import Thumbnail from '../thumbnail';
-import { fetchPhotoInfo } from '../../../store/actionsCreators';
+import { fetchPhotoInfo, openModal } from '../../../store/actionsCreators';
 
 class ThumbnailsGrid extends Component {
   constructor(props) {
@@ -35,11 +35,12 @@ class ThumbnailsGrid extends Component {
 }
 
 ThumbnailsGrid.propTypes = {
-  urlList: PropTypes.array.isRequired
+  urlList: PropTypes.array
 };
 
 const mapDispatchtoProps = dispatch => ({
-  fetchPhotoInfo: id => dispatch(fetchPhotoInfo(id))
+  fetchPhotoInfo: id => dispatch(fetchPhotoInfo(id)),
+  openModal: () => dispatch(openModal())
 });
 
 export default connect(null, mapDispatchtoProps)(ThumbnailsGrid);
