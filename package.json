@@ -62,20 +62,18 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --config client/webpack.config.js",
-    "start": "webpack-dev-server -d --hot --config client/webpack.config.js --watch",
-    "production": "NODE_ENV=production webpack --config client/webpack.config.js",
+    "start":
+      "webpack-dev-server -d --hot --config client/webpack.config.js --watch",
+    "production":
+      "NODE_ENV=production webpack --config client/webpack.config.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "dev-server": "nodemon server/index.js --watch"
   },
   "jest": {
-    "setupFiles": [
-      "./test/jestsetup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "setupFiles": ["./test/jestsetup.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     }
