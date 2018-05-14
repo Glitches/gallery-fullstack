@@ -26,13 +26,7 @@ export default class ThumbnailsGrid extends Component {
     );
   }
 }
-//  {this.props.data..map(thumb => {
-//           return (
-//             <div>
-//               <Thumbnail photo={thumb} />
-//             </div>
-//           );
-//         })}
+
 ThumbnailsGrid.propTypes = {
-  data: PropTypes.object.isRequired
+  urlList: PropTypes.array.isRequired
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 import './';
 
@@ -49,3 +50,8 @@ class Thumbnail extends React.PureComponent {
 }
 
 export default Thumbnail;
+
+Thumbnail.proptypes = PropTypes.shape({
+  id: PropTypes.number,
+  url: PropTypes.string
+}).isRequired;

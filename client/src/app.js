@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchThumbnails } from './store/actionsCreators';
 import TitleBar from './gallery/components/titleBar';
 import Thumbnails from './gallery/components/thumbnailsGrid';
+import PropTypes from 'prop-types';
 
 class App extends React.PureComponent {
   constructor(props) {
