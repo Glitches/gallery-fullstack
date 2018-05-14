@@ -4,6 +4,8 @@ import { fetchThumbnails, fetchPhotoInfo } from './store/actionsCreators';
 import TitleBar from './gallery/components/titleBar';
 import Thumbnails from './gallery/components/thumbnailsGrid';
 import PropTypes from 'prop-types';
+import PhotoInfoModal from './gallery/components/photoInfoModal';
+
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -26,18 +28,30 @@ class App extends React.PureComponent {
   }
 
   render() {
-    return (
-      <div>
-        <TitleBar />
-        <Thumbnails {...this.props.data} />
-      </div>
-    );
+    if (this.props.modal_opened && this.props.photoInfo) {
+      console.log('app', this.props);
+      return (
+        <div>
+          <TitleBar />
+          <PhotoInfoModal {...this.props.photoInfo} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <TitleBar />
+          <Thumbnails {...this.props.data} />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
   data: state.data,
-  fetching_status: state.fetching_status
+  fetching_status: state.fetching_status,
+  modal_opened: state.modal_opened,
+  photoInfo: state.photoInfo
 });
 
 const mapDispatchToProps = dispatch => ({

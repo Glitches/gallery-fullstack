@@ -18,6 +18,7 @@ class ThumbnailsGrid extends Component {
           <div key={thumb.id.toString()}>
             <Thumbnail
               photo={thumb}
+              openModal={this.props.openModal}
               fetchPhotoInfo={this.props.fetchPhotoInfo}
             />
           </div>
