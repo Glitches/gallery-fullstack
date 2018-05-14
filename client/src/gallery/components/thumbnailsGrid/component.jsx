@@ -12,7 +12,7 @@ export default class ThumbnailsGrid extends Component {
     if (this.props.urlList && this.props) {
       return this.props.urlList.map(thumb => {
         return (
-          <div>
+          <div key={thumb.id.toString()}>
             <Thumbnail photo={thumb} />
           </div>
         );

@@ -17,13 +17,20 @@ class App extends React.PureComponent {
     this.props.fetchList();
   }
   render() {
-    console.log(this.props);
-    return (
-      <div>
-        <TitleBar />
-        <Thumbnails {...this.props.data} />
-      </div>
-    );
+    window.onscroll = ev => {
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+        // you're at the bottom of the page
+        this.props.fetchList();
+      }
+    };
+    if (this.props.data.urlList) {
+      return (
+        <div>
+          <TitleBar />
+          <Thumbnails {...this.props.data} />
+        </div>
+      );
+    }
   }
 }
 

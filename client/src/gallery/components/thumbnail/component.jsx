@@ -33,13 +33,16 @@ class Thumbnail extends React.PureComponent {
         display: 'none'
       };
     }
+    const photourl = this.props.photo.url;
+    const id = this.props.photo.id.toString();
     return (
-      <div className="thumbnail__item">
+      <div key={id} className="thumbnail__item">
         <a>
           <img style={spinnerDisplay} src="./Loading_icon.gif" />
           <img
+            key={id}
             style={photoDisplay}
-            src={this.props.photo}
+            src={photourl}
             onLoad={this.handleImageLoaded.bind(this)}
             onError={this.handleImageErrored.bind(this)}
           />
