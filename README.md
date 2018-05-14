@@ -15,7 +15,7 @@ then make a request to [http://localhost:5000](Localhost)
 ## Installing
 
 The build files are already in the server/view folder
-
+Create a .env file with KEY=< your API key >
 If you want to try some commands:
 
 ```bash
