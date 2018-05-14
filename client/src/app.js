@@ -23,14 +23,14 @@ class App extends React.PureComponent {
         this.props.fetchList();
       }
     };
-    if (this.props.data.urlList) {
-      return (
-        <div>
-          <TitleBar />
-          <Thumbnails {...this.props.data} />
-        </div>
-      );
-    }
+    // if (this.props.data.urlList) {
+    return (
+      <div>
+        <TitleBar />
+        <Thumbnails {...this.props.data} />
+      </div>
+    );
+    // }
   }
 }
 
@@ -39,7 +39,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchList: () => dispatch(fetchThumbnails())
+  fetchList: () => dispatch(fetchThumbnails()),
+  fetchPhotoInfo: id => dispatch(fetchPhotoInfo(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {};
