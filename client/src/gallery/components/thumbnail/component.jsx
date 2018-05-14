@@ -61,3 +61,5 @@ Thumbnail.proptypes = PropTypes.shape({
   id: PropTypes.number,
   url: PropTypes.string
 }).isRequired;
+
+// onClick={id => this.props.fetchPhotoInfo(id)}
