@@ -60,7 +60,7 @@ export default Thumbnail;
 
 Thumbnail.proptypes = PropTypes.shape({
   id: PropTypes.number,
-  url: PropTypes.string
+  url: PropTypes.string,
+  openModal: PropTypes.func.isRequired,
+  fetchInfo: PropTypes.func.isRequired
 }).isRequired;
-
-// onClick={id => this.props.fetchPhotoInfo(id)}
